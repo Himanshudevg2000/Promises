@@ -77,3 +77,59 @@ createPost( {
 
 
 
+
+const promise1 = Promise.resolve('hello world')
+const promise2 = 10
+const promise3 = new Promise (( resolve, reject) => 
+    setTimeout(resolve,2000,"Goodbye")
+)
+
+Promise.all([promise1,promise2, promise3]).then(values =>
+    console.log(values)
+);
+
+// promises.all task
+
+let user = {
+    username : 'himanshu',
+    lastactivitytime : new Date()
+}
+
+
+const newcreatePost = (post) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const error = false;
+
+            if(!error) {
+                console.log(user.lastactivitytime)
+                resolve()
+            } 
+            else(
+                reject("Error: Something went wrong")
+            )
+        },2000)
+    })
+}
+
+newcreatePost({
+    title: 'post one', body: 'this is post one'
+})
+
+function updateLastActivityTime() {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            console.log(user.lastactivitytime = new Date())
+            resolve()
+        },3000)
+    })
+}
+updateLastActivityTime()
+
+
+const updatePost = () => {
+    Promise.all([newcreatePost, updateLastActivityTime]).then(([createPostResolves, updateLastActivityTimeResolves]) => {
+        console.log(createPostResolves)
+        console.log(updateLastActivityTimeResolves)
+    })
+}
