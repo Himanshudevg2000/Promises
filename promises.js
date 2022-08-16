@@ -133,3 +133,9 @@ const updatePost = () => {
         console.log(updateLastActivityTimeResolves)
     })
 }
+
+
+
+// difference between callbacks and promises
+//  In callback functions callbacks are passed as arguments into other functions and that passed function is called call function
+// promise constructor takes one argument a callback function with two parameters resolve and reject If everything worked correct then resolve will be called or else reject will called
